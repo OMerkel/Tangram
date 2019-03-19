@@ -1,0 +1,22 @@
+{
+  "version": "0.1",
+  "name": "Tangram",
+  "description": "Tangram solitaire puzzle",
+  "launch_path": "/Tangram/html5/src/index.html",
+  "icons": {
+    "16": "/Tangram/html5/src/img/icons/tangram16.png",
+    "32": "/Tangram/html5/src/img/icons/tangram32.png",
+    "48": "/Tangram/html5/src/img/icons/tangram48.png",
+    "60": "/Tangram/html5/src/img/icons/tangram60.png",
+    "64": "/Tangram/html5/src/img/icons/tangram64.png",
+    "90": "/Tangram/html5/src/img/icons/tangram90.png",
+    "120": "/Tangram/html5/src/img/icons/tangram120.png",
+    "128": "/Tangram/html5/src/img/icons/tangram128.png",
+    "256": "/Tangram/html5/src/img/icons/tangram256.png"
+  },
+  "developer": {
+    "name": "Oliver Merkel",
+    "url": "https://github.com/OMerkel/Tangram"
+  },
+  "installs_allowed_from": ["*"]
+}

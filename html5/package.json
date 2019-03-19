@@ -1,0 +1,25 @@
+{
+  "name": "io.github.omerkel.tangram",
+  "displayName": "Tangram",
+  "version": "0.1",
+  "description": "Tangram - seven tiles solitaire puzzle.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Oliver Merkel",
+  "license": "parts MIT / parts Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License / see LICENSE file for details",
+  "dependencies": {
+    "cordova-android": "^7.0.0",
+    "cordova-plugin-splashscreen": "^5.0.1",
+    "cordova-plugin-whitelist": "^1.3.3"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-whitelist": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  }
+}
