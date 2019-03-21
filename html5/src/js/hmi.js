@@ -35,106 +35,6 @@ Hmi.tiles = [
   "m 0,0 250,0 0,-250 z"
 ];
 
-Hmi.challenge = [
-  {
-    transform: [
-      "t0,500", "", "", "t250,250", "t250,250", "t500,250", "t250,500"
-    ],
-    solution: "m 0,0 500,0 0,500 -500,0 z",
-    viewbox: [ -10,-10,520,520 ],
-    level: 'Square',
-    id: '1'
-  },
-  {
-    transform: [
-      "t0,0r45,0,0", "t531,531r180,0,0", "", "t354,0r45,0,0",
-      "t354,0r45,0,0", "t354,354r45,0,0", "t531,177r135,0,0"
-    ],
-    solution:
-    "m 0,0 0,500 250,-250 -73,-73 177,0 0,177 -73,-73 -250,250 500,0 0,-531 z",
-    viewbox: [ -10,-10,552,552 ],
-    level: 'Arrow',
-    id: '2'
-  },
-  {
-    transform: [
-      "r45,0,0", "r45,0,0", "t0,707r-135,0,0",
-      "t353,0r45,0,0", "t353,0r45,0,0", "t530,177r45,0,0", "t177,177r45,0,0"
-    ],
-    solution: "m 707,0 -707,0 0,707 z",
-    viewbox: [ -10,-10,727,727 ],
-    level: 'Triangle',
-    id: '3'
-  },
-  {
-    transform: [
-      "t300,176r45,0,0", "t125,353", "t478,353r135,0,0",
-      "t125,353", "t530,228", "t780,478", "t460,690r-135,0,0"
-    ],
-    solution: "m 125,0 0,354 -125,125 250,0 34,34 -177,177 353,0 -86,-86 " +
-      "251,-251 31,0 125,125 0,-250 -125,-125 -126,126 -54,-54 -177,0 z",
-    viewbox: [ -10,-50,804,804 ],
-    level: 'Raven',
-    id: '4'
-  },
-  {
-    transform: [
-      "t0,554", "t500,303r90,0,0", "t250,554", "t500,0", "t410,125r45,0,0",
-      "t250,804", "t250,1054"
-    ],
-    solution: "m 0,554 250,0 -125,125 125,125 0,250 250,0 0,-752 88,0 " +
-      "0,-177 36,0 -125,-125 -125,125 36,0 0,177 89,0 -126,126 -250,0 z",
-    viewbox: [ -150,-20,300,1100 ],
-    level: 'Man Paradox 1',
-    id: '5'
-  },
-  {
-    transform: [
-      "t0,554", "t146,658r-45,0,0", "t146,658r-45,0,0", "t500,0",
-      "t410,125r45,0,0", "t377,1012r225,0,0", "t250,762r90,0,0"
-    ],
-    solution: "m 0,554 250,0 -104,104 104,104 0,250 126,0 -177,177 177,0 " +
-      "0,-177 124,0 0,-710 88,0 0,-177 36,0 -125,-125 -125,125 36,0 0,177 " +
-      "89,0 -126,126 -250,0 z",
-    viewbox: [ -250,-20,300,1240 ],
-    level: 'Man Paradox 2',
-    id: '6'
-  },
-  {
-    transform: [
-      "t125,125r90,0,0", "t728,728r-135,0,0", "t250,250", "t125,125r180,0,0",
-      "t250,250", "t250,250", "t728,375r-135,0,0"
-    ],
-    solution: "m 0,0 125,125 0,250 125,125 0,250 250,-250 228,228 0,-352 " +
-      "-177,-177 -52,52 -125,-125 -125,125 0,-250 z",
-    viewbox: [ -10,-10,748,748 ],
-    level: 'Camel',
-    id: '7'
-  },
-  {
-    transform: [
-      "t266,444r45,0,0", "t708,0r135,0,0", "r-45,0,0", "t354,354r90,0,0",
-      "t354,354", "t228,479", "t441,621r-135,0,0"
-    ],
-    solution: "m 0,0 707,0 -230,230 125,125 -125,125 141,141 -532,0 " +
-      "141,-141 -125,-125 125,-125 -229,-231 m 266,444 90,-90 90,90 z",
-    viewbox: [ -10,-50,727,641 ],
-    level: 'Paradox 1',
-    id: '8'
-  },
-  {
-    transform: [
-      "t104,604", "t708,0r135,0,0", "r-45,0,0", "t479,479",
-      "t354,354", "t228,479", "t229,229r90,0,0"
-    ],
-    solution: "m 0,0 707,0 -230,230 125,125 -125,125 125,125 -500,0 " +
-      "125,-125 -125,-125 125,-125 -229,-230 z",
-    viewbox: [ -10,-60,727,641 ],
-    level: 'Paradox 2',
-    id: '9'
-  },
-];
-
 function Hmi() {}
 
 Hmi.prototype.resize = function () {
@@ -176,14 +76,16 @@ Hmi.prototype.setupChallenge = function (tile, paper, challenge) {
   var colors = [
     'red', 'blue', 'green', 'cyan', 'orange', 'yellow', 'violet'
   ];
-  var selectedChallenge = Hmi.challenge[challenge];
+  var selectedChallenge = HmiChallenge[challenge];
   paper.setViewBox(selectedChallenge.viewbox[0],
     selectedChallenge.viewbox[1],
     selectedChallenge.viewbox[2],
     selectedChallenge.viewbox[3], false );
-  if (selectedChallenge.hasOwnProperty('solution') && this.showSolution == 0) {
-    tile[0] = paper.path( selectedChallenge.solution ).attr({
-      fill: 'cyan',
+  var multiColored = $('#multicolor').is(':checked');
+  var mainColor = $('#maincolor').val();
+  if (selectedChallenge.hasOwnProperty('silhouette') && this.showSolution == 0) {
+    tile[0] = paper.path( selectedChallenge.silhouette ).attr({
+      fill: mainColor,
       'fill-rule': 'evenodd',
       stroke: 'black',
       'stroke-width': 2.5,
@@ -197,10 +99,9 @@ Hmi.prototype.setupChallenge = function (tile, paper, challenge) {
   else {
     var t = selectedChallenge.transform;
     for(var n=0; n<t.length; ++n) {
-      var tileColor = /*"white" colors[n]*/ 'cyan';
       tile[n] = paper.path( Hmi.tiles[n] ).attr({
-        fill: tileColor,
-        stroke: this.showSolution == 0 ? tileColor : 'black',
+        fill: this.showSolution == 1 && multiColored ? colors[n] : mainColor,
+        stroke: this.showSolution == 0 ? mainColor : 'black',
         'stroke-width': 2.5,
         'stroke-linecap': 'butt',
         'stroke-linejoin': 'miter',
@@ -218,7 +119,7 @@ Hmi.prototype.initBoard = function () {
   this.paper.path( 'm-1000,-1000 4000,0 0,4000 -4000,0 z').attr({
     stroke: '#444', 'stroke-width': 0.2, 'stroke-linecap': 'round', fill: '#555'
   });
-  this.showSolution = 0;
+  this.showSolution = 1;
   this.challenge = 0; // Hmi.challenge.length - 1;
   this.tile = [];
   this.setupChallenge(this.tile, this.paper, this.challenge);
@@ -234,33 +135,35 @@ Hmi.prototype.init = function () {
   $('#next').on( 'click', this.next.bind(this) );
   $('#previous').on( 'click', this.previous.bind(this) );
   $('#random').on( 'click', this.random.bind(this) );
+  $('#customBackOptions').on( 'click', this.updateChallenge.bind(this) );
+  $('#customOkOptions').on( 'click', this.updateChallenge.bind(this) );
 };
 
 Hmi.prototype.solution = function() {
   this.showSolution ^= 1;
   this.updateChallenge();
-  $( '#left-panel' ).panel( 'close' );
+  $('#left-panel').panel('close');
 };
 
 Hmi.prototype.next = function() {
   this.showSolution = 0;
-  this.challenge = (this.challenge + 1) % Hmi.challenge.length;
+  this.challenge = (this.challenge + 1) % HmiChallenge.length;
   this.updateChallenge();
-  $( '#left-panel' ).panel( 'close' );
+  $('#left-panel').panel('close');
 };
 
 Hmi.prototype.previous = function() {
   this.showSolution = 0;
-  this.challenge = (this.challenge - 1 + Hmi.challenge.length ) % Hmi.challenge.length;
+  this.challenge = (this.challenge - 1 + HmiChallenge.length ) % HmiChallenge.length;
   this.updateChallenge();
-  $( '#left-panel' ).panel( 'close' );
+  $('#left-panel').panel('close');
 };
 
 Hmi.prototype.random = function() {
   this.showSolution = 0;
-  this.challenge = Math.floor(Math.random() * Hmi.challenge.length );
+  this.challenge = Math.floor(Math.random() * HmiChallenge.length );
   this.updateChallenge();
-  $( '#left-panel' ).panel( 'close' );
+  $('#left-panel').panel('close');
 };
 
 Hmi.prototype.updateChallenge = function() {
@@ -275,8 +178,8 @@ Hmi.prototype.updateChallenge = function() {
 Hmi.prototype.setHeader = function() {
   $('#myheader').html(
     "Tangram : " +
-    Hmi.challenge[this.challenge].id + ' : ' +
-    Hmi.challenge[this.challenge].level
+    (this.challenge+1) + ' : ' +
+    HmiChallenge[this.challenge].level
   );
 }
 

@@ -20,7 +20,7 @@ To play the solitaire game you need to print and cut out the seven tiles from th
 <table>
   <tr>
     <td>
-<img alt="Print-and-Play Tangram" src="https://raw.githubusercontent.com/OMerkel/Tangram/master/res/tangram-0000.svg?sanitize=true" />
+<img alt="Print-and-Play Tangram" src="https://raw.githubusercontent.com/OMerkel/Tangram/master/res/tangram-0001-square.svg?sanitize=true" />
     </td>
   </tr>
   <tr>
