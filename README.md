@@ -3,6 +3,8 @@
 
 Tangram solitaire puzzle
 
+* <em>Start a session in browser on https://omerkel.github.io/Tangram/html5/src/index.html </em>
+
 __Keywords, Categories__ _Puzzle, Solitaire, Single Player, Games/Entertainment, Mobile, JavaScript, ECMAScript, Print-and-Play_
 
 # Abstract
@@ -34,5 +36,9 @@ To play the solitaire game you need to print and cut out the seven tiles from th
 * jQuery: MIT licensed, https://github.com/jquery/jquery
 * jQuery Mobile: MIT licensed, https://github.com/jquery/jquery-mobile
 * Raphaël: MIT licensed, http://www.raphaeljs.com
+
+# Contributors / Authors
+
+Oliver Merkel
 
 _All logos, brands and trademarks mentioned belong to their respective owners._

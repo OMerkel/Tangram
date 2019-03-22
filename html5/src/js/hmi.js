@@ -111,6 +111,28 @@ Hmi.challenge = [
     level: 'Camel',
     id: '7'
   },
+  {
+    transform: [
+      "t266,444r45,0,0", "t708,0r135,0,0", "r-45,0,0", "t354,354r90,0,0",
+      "t354,354", "t228,479", "t441,621r-135,0,0"
+    ],
+    solution: "m 0,0 707,0 -230,230 125,125 -125,125 141,141 -532,0 " +
+      "141,-141 -125,-125 125,-125 -229,-231 m 266,444 90,-90 90,90 z",
+    viewbox: [ -10,-50,727,641 ],
+    level: 'Paradox 1',
+    id: '8'
+  },
+  {
+    transform: [
+      "t104,604", "t708,0r135,0,0", "r-45,0,0", "t479,479",
+      "t354,354", "t228,479", "t229,229r90,0,0"
+    ],
+    solution: "m 0,0 707,0 -230,230 125,125 -125,125 125,125 -500,0 " +
+      "125,-125 -125,-125 125,-125 -229,-230 z",
+    viewbox: [ -10,-60,727,641 ],
+    level: 'Paradox 2',
+    id: '9'
+  },
 ];
 
 function Hmi() {}
@@ -162,6 +184,7 @@ Hmi.prototype.setupChallenge = function (tile, paper, challenge) {
   if (selectedChallenge.hasOwnProperty('solution') && this.showSolution == 0) {
     tile[0] = paper.path( selectedChallenge.solution ).attr({
       fill: 'cyan',
+      'fill-rule': 'evenodd',
       stroke: 'black',
       'stroke-width': 2.5,
       'stroke-linecap': 'butt',
@@ -196,7 +219,7 @@ Hmi.prototype.initBoard = function () {
     stroke: '#444', 'stroke-width': 0.2, 'stroke-linecap': 'round', fill: '#555'
   });
   this.showSolution = 0;
-  this.challenge = Hmi.challenge.length - 1; // 0;
+  this.challenge = 0; // Hmi.challenge.length - 1;
   this.tile = [];
   this.setupChallenge(this.tile, this.paper, this.challenge);
   this.setHeader();

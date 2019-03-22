@@ -5502,13 +5502,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
-	// 
+	//
 	// Licensed under the Apache License, Version 2.0 (the "License");
 	// you may not use this file except in compliance with the License.
 	// You may obtain a copy of the License at
-	// 
+	//
 	// http://www.apache.org/licenses/LICENSE-2.0
-	// 
+	//
 	// Unless required by applicable law or agreed to in writing, software
 	// distributed under the License is distributed on an "AS IS" BASIS,
 	// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -5652,7 +5652,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return out;
 	    };
-	    
+
 	    /*\
 	     * eve.on
 	     [ method ]
@@ -5667,7 +5667,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     - name (string) name of the event, dot (`.`) or slash (`/`) separated, with optional wildcards
 	     - f (function) event handler function
 	     **
-	     = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment. 
+	     = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment.
 	     > Example:
 	     | eve.on("mouse", eatIt)(2);
 	     | eve.on("mouse", scream);
@@ -6217,6 +6217,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	        for (var att in params) {
 	            if (params[has](att)) {
 	                if (!R._availableAttrs[has](att)) {
+										/*
+										 * @author Merkel.Oliver(at)web.de
+										 *
+										 * if attribute is unknown to Raphaeljs then check if
+										 * attribute equals 'fill-rule'. In case it does then
+										 * apply the SVG parameter value to the corresponding node.
+										 *
+										 * Mind: this can not be found in official Raphaeljs
+										 * implementation and documentation at time of writing
+										 * 2019-March-22nd
+										 *
+										 * start-of-fill-rule-patch
+										 *
+										 */
+										  if (att == 'fill-rule') {
+												var value = params[att];
+				                attrs[att] = value;
+												node.setAttribute(att, value);
+											}
+										/*
+										 * end-of-fill-rule-patch
+										 */
 	                    continue;
 	                }
 	                var value = params[att];
@@ -6426,7 +6448,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    case "stroke":
 	                        clr = R.getRGB(value);
 	                        node.setAttribute(att, clr.hex);
-	                        att == "stroke" && clr[has]("opacity") && $(node, {"stroke-opacity": clr.opacity > 1 ? clr.opacity / 100 : clr.opacity});
+													att == "stroke" && clr[has]("opacity") && $(node, {"stroke-opacity": clr.opacity > 1 ? clr.opacity / 100 : clr.opacity});
 	                        if (att == "stroke" && o._.arrows) {
 	                            "startString" in o._.arrows && addArrow(o, o._.arrows.startString);
 	                            "endString" in o._.arrows && addArrow(o, o._.arrows.endString, 1);
