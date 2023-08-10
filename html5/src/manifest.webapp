@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "name": "Tangram",
   "description": "Tangram solitaire puzzle",
   "launch_path": "/index.html",

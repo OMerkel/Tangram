@@ -3,7 +3,7 @@
 
 Tangram solitaire puzzle
 
-* <em>Start a session in browser on https://omerkel.github.io/Tangram/html5/src/index.html </em>
+* <em>Start a session in browser on https://omerkel.github.io/Tangram/html5/src </em>
 
 __Keywords, Categories__ _Puzzle, Solitaire, Single Player, Games/Entertainment, Mobile, JavaScript, ECMAScript, Print-and-Play_
 
@@ -14,7 +14,7 @@ to arrange all seven tiles to match a given silhouette. No tile shall be remaini
 
 # Preparation
 
-The application is showing the challenges as an abstract silhouette and allows to switch to display a possible solution.
+The application is showing the challenges as an abstract silhouette and allows switching to display a possible solution.
 To play the solitaire game you need to print and cut out the seven tiles from the following graphics.
 
 <table>
@@ -34,8 +34,8 @@ To play the solitaire game you need to print and cut out the seven tiles from th
 # 3rd Party Libraries
 
 * jQuery: MIT licensed, https://github.com/jquery/jquery
-* jQuery Mobile: MIT licensed, https://github.com/jquery/jquery-mobile
-* Raphaël: MIT licensed, http://www.raphaeljs.com
+* jQuery UI: MIT licensed, https://github.com/jquery/jquery-ui
+* Snap.svg: Apache License V2.0, https://github.com/adobe-webplatform/Snap.svg
 
 # Contributors / Authors
 
